@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container .element-container {
+  margin: 16px;
+  padding: 13px;
+  display: flex;
+  justify-content: space-between;
+}
+.container .element-container h2 {
+  font-size: 40px;
+  font-weight: 200;
+  font-family: RocknRoll One;
+  position: relative;
+}
+
+.container .element-container h2::before {
+  content: "Time";
+  background: linear-gradient(to right, #3498db, #ecf0f1);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 50px;
+}
+
+.container .element-container button {
+  padding: 25px;
+  font-family: DM Serif Text;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  background: linear-gradient(to right, #2abfff, #0071ff);
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+}
+
+.container .element-container button::after {
+  content: "";
+  background: linear-gradient(to right, #ffee00, #ffb300);
+  height: 100%;
+  width: 0px;
+  border-radius: 50px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  transition: 170ms ease-in-out;
+}
+
+.container .element-container button:hover::after {
+  width: 100%;
+}
+
+.container .element-container button:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.container .content-container {
+  height: 60vh;
+  width: 45%;
+  margin: 20px;
+  display: grid;
+  place-content: center;
+  display: relative;
+  z-index: 0;
+}
+
+.container .content-container h1 {
+  font-size: 40px;
+  font-family: RocknRoll one;
+}
+
+.container .content-container h1::before {
+  content: "Welcome ";
+  font-family: DynaPuff;
+  font-size: 75px;
+  background: linear-gradient(to right, #006266, #2980b9);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/*@keyframes colorchange {
+  0% {
+    color: ;
+  }
+
+  50% {
+    color: ;
+  }
+
+  100% {
+    color: ;
+  }
+}*/
+
+.container .content-container p {
+  font-size: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: Bangers;
+  animation: typing 5s steps(15) infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0ch;
+    border-right: 2px solid #1de2d1;
+    color: #81ecec;
+  }
+  50% {
+    width: 26ch;
+    border-right: 2px solid #1de2d1;
+    color: #6c5ce7;
+  }
+  100% {
+    width: 0ch;
+    border-right: none;
+    color: #6c5ce7;
+  }
+}
+
+.container .content-container .design-circle {
+  width: 470px;
+  height: 470px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #48dbfb, #ecf0f1);
+  position: absolute;
+  left: 30px;
+  top: 140px;
+  z-index: -1;
+}
+
+.container .side-container {
+  height: 86%;
+  width: 40%;
+  bottom: 29px;
+  right: 100px;
+  position: absolute;
+}

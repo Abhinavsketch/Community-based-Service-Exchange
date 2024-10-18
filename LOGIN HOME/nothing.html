@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TimeTrade - Login or Register</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f9fafb;
+        font-family: "Arial", sans-serif;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 40px;
+        background-color: #fff;
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .left-section {
+        width: 55%;
+      }
+
+      .right-section {
+        width: 40%;
+      }
+
+      h1 {
+        font-size: 36px;
+        color: #1f2937;
+        font-weight: bold;
+      }
+
+      p {
+        color: #4b5563;
+        margin-top: 10px;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .form-control {
+        margin-bottom: 20px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        box-sizing: border-box;
+        transition: 0.3s ease-in-out;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #4f46e5;
+        box-shadow: 0px 0px 5px rgba(79, 70, 229, 0.5);
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #4f46e5;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      .btn:hover {
+        background-color: #3730a3;
+      }
+
+      .toggle {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #4b5563;
+      }
+
+      .toggle a {
+        color: #4f46e5;
+        cursor: pointer;
+      }
+
+      /* Animations */
+      .fade-in {
+        animation: fadeIn 1s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container fade-in">
+      <!-- Left Section: App Information -->
+      <div class="left-section">
+        <h1>Welcome to TimeTrade</h1>
+        <p>
+          TimeTrade is your community-based skill exchange platform. Connect
+          with others to trade your time and expertise for services you need.
+          Post tasks, get things done, and build connections!
+        </p>
+        <p>
+          Join now to start exchanging skills in the most seamless and rewarding
+          way possible.
+        </p>
+      </div>
+
+      <!-- Right Section: Login/Register Form -->
+      <div class="right-section">
+        <div id="login-section" class="fade-in">
+          <h2 class="text-xl font-bold mb-4">Login to Your Account</h2>
+          <form id="login-form">
+            <div class="form-control">
+              <input
+                type="text"
+                id="login-username"
+                placeholder="Username"
+                required
+              />
+            </div>
+            <div class="form-control">
+              <input
+                type="password"
+                id="login-password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn">Login</button>
+          </form>
+          <div class="toggle">
+            Don't have an account? <a id="show-register">Register</a>
+          </div>
+        </div>
+
+        <div id="register-section" class="fade-in hidden">
+          <h2 class="text-xl font-bold mb-4">Create an Account</h2>
+          <form id="register-form">
+            <div class="form-control">
+              <input
+                type="text"
+                id="register-username"
+                placeholder="Username"
+                required
+              />
+            </div>
+            <div class="form-control">
+              <input
+                type="email"
+                id="register-email"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div class="form-control">
+              <input
+                type="password"
+                id="register-password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn">Register</button>
+          </form>
+          <div class="toggle">
+            Already have an account? <a id="show-login">Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Toggle between Login and Register
+      const loginSection = document.getElementById("login-section");
+      const registerSection = document.getElementById("register-section");
+      const showRegister = document.getElementById("show-register");
+      const showLogin = document.getElementById("show-login");
+
+      showRegister.addEventListener("click", () => {
+        loginSection.classList.add("hidden");
+        registerSection.classList.remove("hidden");
+      });
+
+      showLogin.addEventListener("click", () => {
+        registerSection.classList.add("hidden");
+        loginSection.classList.remove("hidden");
+      });
+    </script>
+  </body>
+</html>
