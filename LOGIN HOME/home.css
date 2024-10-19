@@ -2,143 +2,121 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Bagel Fat One;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: 25px;
+  background-color: #4b4b4b;
+  position: relative;
+}
+
+.container .element-container .intro-name {
+  position: relative;
+}
+
+.container .element-container .intro-name h2 {
+  font-size: 48px;
+  color: #ffffff;
+}
+
+.container .element-container .intro-name h2::before {
+  content: "Time";
+  color: #18dcff;
+}
+
+.container .element-container .intro-name img {
+  width: 151px;
+  height: 81px;
+  position: absolute;
+  top: 1px;
+  left: 220px;
 }
 
 .container .element-container {
-  margin: 16px;
-  padding: 13px;
   display: flex;
   justify-content: space-between;
 }
-.container .element-container h2 {
-  font-size: 40px;
-  font-weight: 200;
-  font-family: RocknRoll One;
-  position: relative;
-}
-
-.container .element-container h2::before {
-  content: "Time";
-  background: linear-gradient(to right, #3498db, #ecf0f1);
-  -webkit-background-clip: text;
-  color: transparent;
-  font-size: 50px;
-}
 
 .container .element-container button {
-  padding: 25px;
-  font-family: DM Serif Text;
-  font-weight: 600;
+  font-size: 15px;
+  color: #18dcff;
+  width: 130px;
+  height: 89px;
+  border-radius: 50px;
+  background-color: #1e1e1e;
   border: none;
-  border-radius: 50px;
-  color: white;
-  background: linear-gradient(to right, #2abfff, #0071ff);
-  position: relative;
-  z-index: 0;
-  cursor: pointer;
+  box-shadow: 0 0 5px 5px #1e1e1e;
 }
 
-.container .element-container button::after {
-  content: "";
-  background: linear-gradient(to right, #ffee00, #ffb300);
-  height: 100%;
-  width: 0px;
-  border-radius: 50px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-  transition: 170ms ease-in-out;
-}
-
-.container .element-container button:hover::after {
-  width: 100%;
-}
-
-.container .element-container button:hover {
-  color: white;
-  cursor: pointer;
-}
-
-.container .content-container {
+.container .welcome-container {
   height: 60vh;
-  width: 45%;
+  width: 40%;
   margin: 20px;
   display: grid;
   place-content: center;
-  display: relative;
-  z-index: 0;
+  line-height: 50px;
 }
 
-.container .content-container h1 {
-  font-size: 40px;
-  font-family: RocknRoll one;
+.container .welcome-container h2 {
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 32;
 }
 
-.container .content-container h1::before {
-  content: "Welcome ";
-  font-family: DynaPuff;
-  font-size: 75px;
-  background: linear-gradient(to right, #006266, #2980b9);
-  -webkit-background-clip: text;
-  color: transparent;
+.container .welcome-container h2::before {
+  content: "WELCOME ";
+  font-size: 64px;
+  color: #fff;
 }
 
-/*@keyframes colorchange {
-  0% {
-    color: ;
-  }
-
-  50% {
-    color: ;
-  }
-
-  100% {
-    color: ;
-  }
-}*/
-
-.container .content-container p {
-  font-size: 40px;
-  white-space: nowrap;
+.container .welcome-container p {
+  font-size: 28px;
+  color: #18dcff;
   overflow: hidden;
-  font-family: Bangers;
-  animation: typing 5s steps(15) infinite;
+  white-space: nowrap;
+  display: inline-block;
+  width: 0%;
+  animation: changeWidth 5s steps(15) infinite;
 }
 
-@keyframes typing {
+@keyframes changeWidth {
   0% {
-    width: 0ch;
-    border-right: 2px solid #1de2d1;
-    color: #81ecec;
+    width: 0%;
   }
   50% {
-    width: 26ch;
-    border-right: 2px solid #1de2d1;
-    color: #6c5ce7;
+    width: 100%;
   }
   100% {
-    width: 0ch;
-    border-right: none;
-    color: #6c5ce7;
+    width: 0%;
   }
 }
 
-.container .content-container .design-circle {
-  width: 470px;
-  height: 470px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #48dbfb, #ecf0f1);
-  position: absolute;
-  left: 30px;
-  top: 140px;
-  z-index: -1;
+.container .welcome-container button {
+  width: 150px;
+  height: 40px;
+  border-radius: 15px;
+  background-color: #1e1e1e;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  box-shadow: 0 0 5px 5px #1e1e1e;
+  margin-top: 13px;
 }
 
-.container .side-container {
-  height: 86%;
-  width: 40%;
-  bottom: 29px;
-  right: 100px;
+.container .picture-container {
+  width: 55%;
+  height: 85vh;
   position: absolute;
+  top: 115px;
+  right: 5px;
+}
+
+.container .picture-container img {
+  position: absolute;
+  bottom: 3px;
+  right: 15px;
+  width: 900px;
 }
