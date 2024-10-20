@@ -4,58 +4,71 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TimeTrade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="profile.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Modak&family=RocknRoll+One&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="TimeTrade logo.jpg" />
   </head>
   <body>
     <div class="container">
-      <div class="logo">
-        <img src="TimeTrade logo.jpg" alt="Image-of-Timetrade" />
-      </div>
       <div class="main-container">
         <div class="intro">
-          <h2>Tell Us About You</h2>
+          <h1>You</h1>
         </div>
-        <input type="file" id="file" accept="image/" hidden />
-        <div class="add-profile-pic">
+        <input type="file" class="real-button" hidden />
+        <div class="upload-pic" data-img="hello.png">
           <i class="bx bxs-user"></i>
-          <h3>Upload a Picture</h3>
-          <button class="picture-submit">Submit</button>
-        </div>
-        <div class="about-info">
-          <div class="input-field">
-            <i class="bx bx-user"></i>
-            <input type="text" placeholder="Username" />
-          </div>
-          <div class="input-field">
-            <i class="bx bxl-gmail"></i>
-            <input type="email" placeholder="Email" />
-          </div>
-          <div class="input-field">
-            <i class="bx bxs-phone"></i>
-            <input type="number" placeholder="Number" />
-          </div>
-          <div class="input-field">
-            <i class="bx bxs-home"></i>
-            <input type="text" placeholder="Home Address" />
-          </div>
+          <h2>Upload Pic</h2>
+          <button class="select-button">Upload</button>
         </div>
       </div>
-      <div class="bottom-page">
-        <button class="next">Next</button>
+      <div class="profile-container">
+        <form action="#" method="post">
+          <div class="first-template">
+            <div class="user-name">
+              <h2>Name</h2>
+              <input type="text" placeholder="Your Name" />
+            </div>
+            <div class="user-last-name">
+              <h2>Name</h2>
+              <input type="text" placeholder="Your Last Name" />
+            </div>
+          </div>
+          <div class="second-template">
+            <div class="user-email">
+              <h2>mail</h2>
+              <input type="email" placeholder="Enter Your Email" />
+            </div>
+            <div class="user-number">
+              <h2>Number</h2>
+              <input type="number" placeholder="Enter Your Number" />
+            </div>
+          </div>
+          <div class="third-template">
+            <div class="user-company">
+              <h2>pany</h2>
+              <input type="text" placeholder="Your Company Name" />
+            </div>
+            <div class="user-designation">
+              <h2>gnation</h2>
+              <input type="text" placeholder="Your User-Designation" />
+            </div>
+          </div>
+          <div class="fouth-template">
+            <h2>io</h2>
+            <input type="text" placeholder="Your Information" />
+          </div>
+          <input type="submit" class="submit-class" value="Submit" />
+        </form>
       </div>
     </div>
-
     <script src="profile.js"></script>
   </body>
 </html>

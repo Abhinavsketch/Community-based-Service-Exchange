@@ -2,138 +2,207 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: RocknRoll one;
+  font-family: Work Sans;
+  color: #fff;
+}
+
+:root {
+  --main-background: #4b4b4b;
+  --main-color: #18dcff;
+  --button-color: #1e1e1e;
 }
 
 .container {
+  padding: 10px;
+  background: var(--main-background);
+  width: 100%;
   height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
 }
 
+.container .main-container .intro h1::before {
+  content: "About ";
+  color: var(--main-color);
+}
 .container .main-container {
-  width: 900px;
-  height: 500px;
-  padding: 15px;
-  background: linear-gradient(to right, #3498db, #ecf0f1);
+  height: 100vh;
+  width: 30%;
   position: relative;
 }
 
-.container .main-container .add-profile-pic {
-  width: 270px;
-  height: 270px;
-  bottom: 160px;
-  border-radius: 50%;
+.container .main-container .upload-pic {
+  width: 100px;
+  height: 100px;
   background-color: #fff;
-  position: absolute;
-}
-
-.container .main-container .add-profile-pic i {
-  font-size: 235px;
-  left: 17px;
   border-radius: 50%;
-  position: absolute;
+  margin-top: 230px;
+  margin-left: 30px;
 }
 
-.container .main-container .add-profile-pic h3 {
-  font-size: 30px;
+.container .main-container .upload-pic i {
+  position: absolute;
+  left: 39px;
   top: 270px;
-  left: 10px;
-  position: absolute;
+  font-size: 80px;
+  color: #18dcff;
 }
 
-.container .main-container .add-profile-pic button {
-  top: 325px;
-  left: 100px;
+.container .main-container .upload-pic h2 {
+  position: absolute;
+  top: 380px;
+}
+
+.container .main-container .upload-pic button {
+  position: absolute;
+  top: 420px;
+  left: 55px;
   padding: 10px;
-  border-radius: 25px;
-  border: none;
-  background-color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  position: absolute;
-}
-
-.container .main-container .add-profile-pic button:hover {
-  box-shadow: 0 0 4px 5px #fff;
-}
-
-.container .main-container .about-info {
-  width: 560px;
-  height: 400px;
-  position: absolute;
-  right: 30px;
-}
-
-.container .main-container .about-info .input-field {
-  max-width: 500px;
-  width: 100%;
-  height: 50px;
-  background-color: #fff;
-  margin-bottom: 60px;
-  border-radius: 25px;
-  padding: 5px;
-  text-align: center;
-  position: relative;
-}
-
-.container .main-container .about-info .input-field input {
-  padding: 10px;
+  color: var(--main-color);
+  background-color: var(--button-color);
   border: none;
   outline: none;
-  width: 90%;
-  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 5px var(--button-color);
 }
 
-.container .main-container .about-info .input-field input::placeholder {
-  font-size: 15px;
-  font-family: RocknRoll;
+.container .main-container .upload-pic button:hover {
+  background-color: #fff;
 }
 
-.container .main-container .about-info .input-field i {
-  text-align: center;
-  font-size: 20px;
-  left: 7px;
-  bottom: 15px;
+.container .profile-container {
+  width: 70%;
+  height: 100vh;
   position: absolute;
+  right: 10px;
+  top: 2px;
 }
 
-.container .main-container .about-info .input input:focus {
-  border: none;
+.container .profile-container form {
+  margin-top: 80px;
+}
+
+.container .profile-container form .first-template {
+  display: flex;
+  gap: 60px;
+}
+
+.container .profile-container form .first-template .user-name h2::before {
+  content: "First ";
+  color: var(--main-color);
+}
+
+.container .profile-container form .first-template .user-name input {
+  height: 40px;
+  width: 390px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.container .profile-container form .first-template .user-last-name h2::before {
+  content: "Last ";
+  color: var(--main-color);
+}
+
+.container .profile-container form .first-template .user-last-name input {
+  height: 40px;
+  width: 390px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.container .profile-container form .second-template {
+  margin-top: 60px;
+  display: flex;
+  gap: 60px;
+}
+
+.container .profile-container form .second-template .user-email h2::before {
+  content: "E-";
+  color: var(--main-color);
+}
+
+.container .profile-container form .second-template .user-email input {
+  height: 40px;
+  width: 390px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.container .profile-container form .second-template .user-number h2::before {
+  content: "Phone ";
+  color: var(--main-color);
+}
+
+.container .profile-container form .second-template .user-number input {
+  height: 40px;
+  width: 390px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.container .profile-container form .third-template {
+  margin-top: 60px;
+  display: flex;
+  gap: 60px;
+}
+
+.container .profile-container form .third-template .user-company h2::before {
+  content: "Com";
+  color: var(--main-color);
+}
+
+.container .profile-container form .third-template .user-company input {
+  height: 40px;
+  width: 390px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.container
+  .profile-container
+  form
+  .third-template
+  .user-designation
+  h2::before {
+  content: "Desi";
+  color: var(--main-color);
+}
+
+.container .profile-container form .third-template .user-designation input {
+  height: 40px;
+  width: 390px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.container .profile-container form .fouth-template {
+  margin-top: 60px;
+}
+
+.container .profile-container form .fouth-template h2::before {
+  content: "B";
+  color: var(--main-color);
+}
+
+.container .profile-container form .fouth-template input {
+  height: 80px;
+  width: 850px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.container .profile-container form .submit-class {
+  position: absolute;
+  left: 36%;
+  margin-top: 70px;
+  color: var(--main-color);
+  padding: 15px;
+  background-color: var(--button-color);
   outline: none;
-}
-
-.container .bottom-page {
-  width: 100%;
-  height: 10px;
-  position: absolute;
-  bottom: 30px;
-  padding: 50px;
-  text-align: end;
-}
-
-.container .bottom-page button {
-  width: 80px;
-  height: 50px;
-  padding: 5px;
-  border-radius: 25px;
   border: none;
-  background-color: #3498db;
+  box-shadow: 0 0 5px 5px var(--button-color);
+  border-radius: 20px;
 }
 
-.container .bottom-page button:hover {
-  box-shadow: 0 0 5px 5px #3498db;
-}
-
-.container .logo {
-  top: -10px;
-  left: 5px;
-  position: absolute;
-}
-
-.container .logo img {
-  width: 300px;
+.container .main-container .upload-pic.active:hover::before {
+  opacity: 1;
 }
