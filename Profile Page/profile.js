@@ -35,5 +35,5 @@ realbutton.addEventListener("change", function () {
 
 formSubmit.addEventListener("submit", (event) => {
   event.preventDefault();
-  window.location.href = "http://127.0.0.1:5500/DASHBOARD/INDEX.HTML";
+  window.location.href = "http://127.0.0.1:5500/LOGIN%20PAGE/login.html";
 });

@@ -95,6 +95,7 @@
   width: 390px;
   padding-left: 10px;
   margin-top: 10px;
+  color: black;
 }
 
 .container .profile-container form .first-template .user-last-name h2::before {
@@ -107,6 +108,7 @@
   width: 390px;
   padding-left: 10px;
   margin-top: 10px;
+  color: black;
 }
 
 .container .profile-container form .second-template {
@@ -125,6 +127,7 @@
   width: 390px;
   padding-left: 10px;
   margin-top: 10px;
+  color: black;
 }
 
 .container .profile-container form .second-template .user-number h2::before {
@@ -137,6 +140,7 @@
   width: 390px;
   padding-left: 10px;
   margin-top: 10px;
+  color: black;
 }
 
 .container .profile-container form .third-template {
@@ -155,6 +159,7 @@
   width: 390px;
   padding-left: 10px;
   margin-top: 10px;
+  color: black;
 }
 
 .container
@@ -172,6 +177,7 @@
   width: 390px;
   padding-left: 10px;
   margin-top: 10px;
+  color: black;
 }
 
 .container .profile-container form .fouth-template {
@@ -188,6 +194,7 @@
   width: 850px;
   padding-left: 10px;
   margin-top: 10px;
+  color: black;
 }
 
 .container .profile-container form .submit-class {
