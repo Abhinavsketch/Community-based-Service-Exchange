@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General styling for the settings page */
+        .container { margin: 20px; }
+        .section-header { cursor: pointer; padding: 10px; background-color: #f1f1f1; margin-bottom: 5px; }
+        .content { display: none; padding: 15px; border: 1px solid #ccc; margin-bottom: 10px; }
+        .theme-toggle { margin-top: 20px; padding: 10px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 5px; }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="container">
+        <h2>Settings</h2>
+
+        <!-- Manage Accounts Section -->
+        <div class="section-header" onclick="toggleSection('account-settings')">Manage Accounts</div>
+        <div id="account-settings" class="content">
+            <p><strong>Update Name:</strong> <input type="text" placeholder="Enter new name"></p>
+            <p><strong>Update Email:</strong> <input type="email" placeholder="Enter new email"></p>
+            <p><strong>Change Password:</strong> <input type="password" placeholder="New password"></p>
+            <button>Save Changes</button>
+        </div>
+
+        <!-- Privacy Settings -->
+        <div class="section-header" onclick="toggleSection('privacy-settings')">Privacy Settings</div>
+        <div id="privacy-settings" class="content">
+            <label><input type="checkbox" checked> Show profile to public</label><br>
+            <label><input type="checkbox"> Enable private mode</label><br>
+            <label><input type="checkbox"> Hide email address</label>
+        </div>
+
+        <!-- Notifications Section -->
+        <div class="section-header" onclick="toggleSection('notifications-settings')">Notification Preferences</div>
+        <div id="notifications-settings" class="content">
+            <label><input type="checkbox" checked> Email Notifications</label><br>
+            <label><input type="checkbox"> SMS Notifications</label><br>
+            <label><input type="checkbox"> Push Notifications</label>
+        </div>
+
+        <!-- Security Settings -->
+        <div class="section-header" onclick="toggleSection('security-settings')">Account Security</div>
+        <div id="security-settings" class="content">
+            <button>Enable 2FA (Two-Factor Authentication)</button><br>
+            <p><a href="#">Reset Password</a></p>
+        </div>
+
+        <!-- UI Customization Section -->
+        <div class="section-header" onclick="toggleSection('ui-settings')">User Interface Customization</div>
+        <div id="ui-settings" class="content">
+            <label><input type="radio" name="layout" checked> List View</label><br>
+            <label><input type="radio" name="layout"> Grid View</label><br>
+        </div>
+
+        <!-- Theme Toggle -->
+        <div class="section-header">Display Mode</div>
+        <div>
+            <button class="theme-toggle" id="themeToggle">Switch to Dark Mode</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.style.display = (section.style.display === 'block') ? 'none' : 'block';
+        }
+
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('light-mode')) {
+                body.classList.replace('light-mode', 'dark-mode');
+                themeToggle.textContent = 'Switch to Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.replace('dark-mode', 'light-mode');
+                themeToggle.textContent = 'Switch to Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        window.onload = function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            body.classList.add(savedTheme + '-mode');
+            if (savedTheme === 'dark') {
+                themeToggle.textContent = 'Switch to Light Mode';
+            }
+        };
+    </script>
+</body>
+</html>

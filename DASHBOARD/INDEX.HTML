@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skill Exchange Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background-color: #f4f4f4;
+    }
+    .sidebar {
+      background-color: #1f2937;
+      height: 100vh;
+    }
+    .sidebar a {
+      color: #fff;
+      padding: 15px;
+      display: block;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      background-color: #374151;
+    }
+    .active {
+      background-color: #4f46e5;
+    }
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .task {
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 15px;
+      margin-bottom: 10px;
+      background-color: #fafafa;
+    }
+    .task:hover {
+      background-color: #f0f0f0;
+    }
+    .task-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .task-buttons button {
+      margin-left: 10px;
+    }
+    .time-tracker {
+      font-weight: bold;
+      color: #4f46e5;
+    }
+    .chart-container {
+      width: 300px;
+      height: 300px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body class="flex">
+  <!-- Sidebar -->
+  <div class="sidebar w-64 p-6">
+    <div class="text-white text-2xl font-bold mb-6">Skill Exchange</div>
+    <a href="index.html" class="active">Dashboard</a>
+    <a href="profile.html">Profile</a>
+    <a href="messages.html">Messages</a>
+    <a href="skills.html">Skill Listings</a>
+    <a href="timebank.html">Time Banking</a>
+    <a href="settings.html">Settings</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 p-6 overflow-auto">
+    <!-- Highlights Section -->
+    <div class="card mb-6">
+      <h2 class="text-2xl font-bold mb-4">Highlights</h2>
+      <div id="highlights">
+        <!-- Sample Task -->
+        <div class="task">
+          <div class="task-header">
+            <h3 class="font-semibold">Design a Logo</h3>
+            <div class="task-buttons">
+              <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded accept-btn">Accept</button>
+              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded decline-btn">Decline</button>
+            </div>
+          </div>
+          <p class="mt-2">Client: ABC Corp</p>
+          <button class="text-blue-500 mt-2 details-btn">View Details</button>
+          <div class="details mt-2 hidden">
+            <p>Task Description: Design a professional logo for ABC Corp's new product line.</p>
+            <p>Deadline: 2024-11-30</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post a Task Section -->
+    <div class="card mb-6">
+      <h2 class="text-2xl font-bold mb-4">Post a Task</h2>
+      <div>
+        <label class="block mb-2">Task Name:</label>
+        <input type="text" id="task-name" class="border p-2 w-full mb-4" placeholder="Enter task name" required>
+        
+        <label class="block mb-2">Description:</label>
+        <textarea id="task-description" class="border p-2 w-full mb-4" placeholder="Enter task description" required></textarea>
+        
+        <label class="block mb-2">Deadline:</label>
+        <input type="date" id="task-deadline" class="border p-2 w-full mb-4" required>
+        
+        <button id="post-task-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Post Task</button>
+      </div>
+    </div>
+
+    <!-- Accepted Tasks Section -->
+    <div class="card mb-6">
+      <h2 class="text-2xl font-bold mb-4">Accepted Tasks</h2>
+      <div id="accepted-tasks"></div>
+    </div>
+
+    <!-- Submitted Tasks Section -->
+    <div class="card mb-6">
+      <h2 class="text-2xl font-bold mb-4">Submitted Tasks</h2>
+      <div id="submitted-tasks"></div>
+    </div>
+
+    <!-- User Feedback Pie Chart -->
+    <div class="card">
+      <h2 class="text-2xl font-bold mb-4">User Feedback</h2>
+      <div class="chart-container">
+        <canvas id="feedbackChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.details-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const details = button.nextElementSibling;
+        details.classList.toggle('hidden');
+        button.textContent = details.classList.contains('hidden') ? 'View Details' : 'Hide Details';
+      });
+    });
+
+    // Handle Accept and Decline Buttons
+    document.querySelectorAll('.accept-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const taskDiv = button.closest('.task');
+        const taskTitle = taskDiv.querySelector('h3').textContent;
+        const acceptedTasksDiv = document.getElementById('accepted-tasks');
+
+        // Create Accepted Task Element
+        const acceptedTask = document.createElement('div');
+        acceptedTask.classList.add('task');
+        acceptedTask.innerHTML = `
+          <h3 class="font-semibold">${taskTitle}</h3>
+          <p class="time-tracker" data-start="${new Date().getTime()}">Time Elapsed: 0s</p>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded submit-btn">Submit</button>
+          <div class="rating mt-2 hidden">
+            <label for="rating">Rate this user:</label>
+            <select class="border p-1" id="rating">
+              <option value="5">5 Stars</option>
+              <option value="4">4 Stars</option>
+              <option value="3">3 Stars</option>
+              <option value="2">2 Stars</option>
+              <option value="1">1 Star</option>
+            </select>
+            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded rate-btn">Rate</button>
+          </div>
+        `;
+        acceptedTasksDiv.appendChild(acceptedTask);
+
+        let startTime = new Date().getTime();
+        let timer = setInterval(() => {
+          const now = new Date().getTime();
+          const elapsed = Math.floor((now - startTime) / 1000);
+          acceptedTask.querySelector('.time-tracker').textContent = `Time Elapsed: ${elapsed}s`;
+        }, 1000);
+
+        // Handle Submit Button
+        acceptedTask.querySelector('.submit-btn').addEventListener('click', () => {
+          clearInterval(timer); // Stop the timer
+          const elapsedTime = acceptedTask.querySelector('.time-tracker').textContent;
+          const submittedTasksDiv = document.getElementById('submitted-tasks');
+
+          // Move to Submitted Tasks
+          const submittedTask = document.createElement('div');
+          submittedTask.classList.add('task');
+          submittedTask.innerHTML = `
+            <h3 class="font-semibold">${taskTitle}</h3>
+            <p>${elapsedTime}</p>
+          `;
+          submittedTasksDiv.appendChild(submittedTask);
+
+          // Show Rating Section
+          acceptedTask.querySelector('.rating').classList.remove('hidden');
+
+          // Handle Rating Submission
+          acceptedTask.querySelector('.rate-btn').addEventListener('click', () => {
+            const ratingValue = acceptedTask.querySelector('#rating').value;
+            alert(`You rated this task with ${ratingValue} stars.`);
+          });
+
+          // Remove from Accepted Tasks
+          acceptedTask.remove();
+        });
+
+        taskDiv.remove(); // Remove Task from Highlights
+      });
+    });
+
+    document.querySelectorAll('.decline-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const taskDiv = button.closest('.task');
+        taskDiv.remove();
+      });
+    });
+
+    // Handle Post Task Button
+    document.getElementById('post-task-btn').addEventListener('click', () => {
+      const taskName = document.getElementById('task-name').value;
+      const taskDescription = document.getElementById('task-description').value;
+      const taskDeadline = document.getElementById('task-deadline').value;
+
+      // Create a new task element
+      const newTask = document.createElement('div');
+      newTask.classList.add('task');
+      newTask.innerHTML = `
+        <div class="task-header">
+          <h3 class="font-semibold">${taskName}</h3>
+          <div class="task-buttons">
+            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded accept-btn">Accept</button>
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded decline-btn">Decline</button>
+          </div>
+        </div>
+        <p class="mt-2">${taskDescription}</p>
+        <p>Deadline: ${taskDeadline}</p>
+        <button class="text-blue-500 mt-2 details-btn">View Details</button>
+        <div class="details mt-2 hidden">
+          <p>Task Description: ${taskDescription}</p>
+          <p>Deadline: ${taskDeadline}</p>
+        </div>
+      `;
+
+      // Add the new task to the highlights section
+      document.getElementById('highlights').appendChild(newTask);
+
+      // Clear input fields
+      document.getElementById('task-name').value = '';
+      document.getElementById('task-description').value = '';
+      document.getElementById('task-deadline').value = '';
+    });
+
+    // Initialize Feedback Pie Chart
+    const ctx = document.getElementById('feedbackChart').getContext('2d');
+    const feedbackChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['5 Stars', '4 Stars', '3 Stars', '2 Stars', '1 Star'],
+        datasets: [{
+          label: 'User Feedback',
+          data: [60, 25, 10, 3, 2],
+          backgroundColor: [
+            'rgba(75, 192, 192, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(153, 102, 255, 0.7)'
+          ],
+          borderColor: [
+            'rgba(75, 192, 192, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(153, 102, 255, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
