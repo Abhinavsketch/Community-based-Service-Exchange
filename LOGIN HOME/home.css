@@ -49,6 +49,9 @@
   background-color: #1e1e1e;
   border: none;
   box-shadow: 0 0 5px 5px #1e1e1e;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 
 .container .welcome-container {
@@ -104,6 +107,7 @@
   font-size: 20px;
   box-shadow: 0 0 5px 5px #1e1e1e;
   margin-top: 13px;
+  cursor: pointer;
 }
 
 .container .picture-container {
@@ -118,5 +122,7 @@
   position: absolute;
   bottom: 3px;
   right: 15px;
+  clip-path: inset(30px 0 0 0 0);
   width: 900px;
+  z-index: 0;
 }
