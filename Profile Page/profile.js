@@ -1,6 +1,7 @@
 const realbutton = document.querySelector(".real-button");
 const selectbutton = document.querySelector(".select-button");
 const imageArea = document.querySelector(".upload-pic");
+const formSubmit = document.querySelector(".submit-class");
 
 selectbutton.addEventListener("click", () => {
   realbutton.click();
@@ -30,4 +31,9 @@ realbutton.addEventListener("change", function () {
     imageArea.dataset.img = image.name;
   };
   reader.readAsDataURL(image);
+});
+
+formSubmit.addEventListener("submit", (event) => {
+  event.preventDefault();
+  window.location.href = "http://127.0.0.1:5500/DASHBOARD/INDEX.HTML";
 });
